@@ -1,0 +1,44 @@
+/*global requirejs:true*/
+'use strict';
+
+
+requirejs.config({
+    paths: {}
+});
+
+
+require([/* Dependencies */], function () {
+
+    var app = {
+        initialize: function () {
+            // Your code here
+            $(document).ready(function () {
+                $('.removeBook').click(function (e) {
+                    var deleteId = $(this).data('id');
+                    $.ajax({
+                        url: '/manage/books/delete/' + deleteId,
+                        type: 'DELETE',
+                        success: function () {
+                        }
+                    });
+                    window.location = '/manage/books';
+                });
+
+                $('.removeCategory').click(function (e) {
+                    var deleteId = $(this).data('id');
+                    $.ajax({
+                        url: '/manage/categories/delete/' + deleteId,
+                        type: 'DELETE',
+                        success: function () {
+
+                        }
+                    });
+                    window.location = '/manage/categories';
+                });
+            });
+        }
+    };
+
+    app.initialize();
+
+});

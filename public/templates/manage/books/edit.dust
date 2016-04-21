@@ -1,0 +1,71 @@
+{>"layouts/manage" /}
+
+{<body}
+    <div class="row">
+        <div class="large-12 columns">
+            <h2>Add Book</h2>
+
+            <form method="post" action="/manage/books/edit/{book._id}">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="title">Title
+                            <input name="title" type="text" value="{book.title}"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="author">Author
+                            <input name="author" type="text" value="{book.author}"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="publisher">Publisher
+                            <input name="publisher" type="text" value="{book.publisher}"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="author">Price
+                            <input name="price" type="text" value="{book.price}"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="category">Category
+                            <select name="category" id="category" >
+                                {#categories}
+                                    <option value="{.name}" >{.name}</option>
+                                {/categories}
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="description">
+                            <textarea name="description" id="description" rows="5" >{book.description}</textarea>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="cover">Cover
+                            <input name="cover" type="text" value="{book.cover}">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <input type="submit" class="button" value="Submit">
+                    </div>
+                </div>
+                <input type="hidden" name="_csrf" value="{_csrf}">
+            </form>
+        </div>
+    </div>
+{/body}
